@@ -17,7 +17,9 @@
 ทำ A1 แล้วเลือกทำ **A2–A3 ตามระบบปฏิบัติการของเครื่องตัวเอง** (Windows หรือ macOS) จากนั้นทำ A4
 ตั้งแต่ส่วน B เป็นต้นไป คำสั่งเหมือนกันทั้งสองระบบ พิมพ์ใน **PowerShell** (Windows) หรือ **Terminal** (macOS)
 
-**A1. สมัครบัญชี GitHub** ที่ https://github.com/signup ด้วยอีเมลมหาวิทยาลัย `@psu.ac.th` ตั้งชื่อผู้ใช้ (username) ที่สุภาพ แล้วจดไว้
+**A1. สมัครบัญชี GitHub** ที่ https://github.com/signup ด้วยอีเมลมหาวิทยาลัย `@psu.ac.th` และ **ตั้งชื่อผู้ใช้ (username) เป็นรหัสนักศึกษา 10 หลัก** เช่น `6710210001`
+- ถ้า GitHub แจ้งว่าชื่อนี้มีผู้ใช้แล้ว ให้ใช้ `s` นำหน้ารหัส เช่น `s6710210001` และแจ้ง TA
+- ถ้ามีบัญชี GitHub อยู่แล้ว ไม่ต้องสมัครใหม่ ให้เปลี่ยน username เป็นรหัสนักศึกษาที่ Settings → Account → **Change username** (repo เดิมยังอยู่ ลิงก์เดิมจะพาไปที่ชื่อใหม่ให้อัตโนมัติ)
 
 ### Windows
 
@@ -121,7 +123,7 @@ repo ที่ได้มี `PROCESS.md` (แบบฟอร์มวิธี
 - ต้องเป็น **private** ห้ามเป็น public เพื่อไม่ให้ผู้อื่นคัดลอกงาน
 
 **C2. เพิ่มอาจารย์เป็น collaborator** (ทำบนเว็บ)
-1. เปิด `https://github.com/<username ของเรา>/310-126-lab0/settings/access`
+1. เปิด `https://github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access`
 2. กด **Add people** → พิมพ์ `kasikrit` → เลือก → กด **Add kasikrit to this repository**
 3. หน้าจอต้องแสดง `kasikrit` สถานะ **Pending invite** (อาจารย์จะกดรับเอง) **ห้ามลบคำเชิญนี้จนจบภาคการศึกษา**
 
@@ -205,7 +207,7 @@ git status
 
 ต้องขึ้นว่า `Your branch is up to date with 'origin/main'`
 
-**E3. ส่งผ่าน Google Form ส่งงาน:** `[อาจารย์ใส่ลิงก์]` กรอกรหัสนักศึกษา, ชื่อ - นามสกุล, งาน "Lab 0", URL ของ repo (`https://github.com/<username>/310-126-lab0`) และ SHA 40 ตัว
+**E3. ส่งผ่าน Google Form ส่งงาน:** `[อาจารย์ใส่ลิงก์]` กรอกรหัสนักศึกษา, ชื่อ - นามสกุล, งาน "Lab 0", URL ของ repo (`https://github.com/<รหัสนักศึกษา>/310-126-lab0`) และ SHA 40 ตัว
 
 **E4. ให้ TA ตรวจและลงชื่อ**
 
@@ -222,7 +224,7 @@ git status
 
 ## ส่วน F: กติกาที่ใช้กับทุก Lab และ Assignment
 
-1. **ข้อตกลงรายวิชา:** ทุกงานต้องอยู่ใน private repo ของตัวเองที่มี `kasikrit` เป็น collaborator และส่ง SHA ผ่าน Google Form ภายใน deadline ไม่ทำ = ไม่ได้ส่งงาน (0 คะแนน)
+1. **ข้อตกลงรายวิชา:** บัญชี GitHub ใช้รหัสนักศึกษาเป็น username และทุกงานต้องอยู่ใน private repo ของตัวเองที่มี `kasikrit` เป็น collaborator และส่ง SHA ผ่าน Google Form ภายใน deadline ไม่ทำ = ไม่ได้ส่งงาน (0 คะแนน)
 2. ระยะเวลาทำงานแต่ละชิ้น **7 วัน** ต้อง push อย่างน้อย 3 ครั้ง ใน 2 วันที่ต่างกันขึ้นไป
 3. งานที่ตรวจคือ **สำเนา ณ SHA ที่ส่ง** ซึ่งอาจารย์เก็บไว้ตอน deadline แก้ repo ภายหลังไม่มีผล
 4. **ห้าม** `git push --force` ห้ามลบหรือแก้ประวัติ commit ห้ามลบ repo และห้ามถอนสิทธิ์ `kasikrit`
@@ -255,6 +257,6 @@ git status
 | commit บน GitHub ไม่ขึ้นชื่อบัญชีเรา | อีเมลใน `git config` ไม่ตรงกับบัญชี GitHub | `git config --global user.email "อีเมลบัญชี GitHub"` แล้ว commit ใหม่ |
 | `gh repo create` ขึ้นว่าชื่อซ้ำ | เคยสร้าง repo ชื่อนี้แล้ว | ใช้ repo เดิม: `gh repo clone 310-126-lab0` |
 | ใน repo ไม่มี `PROCESS.md` | สร้าง repo โดยไม่ใส่ `--template` | ลบ repo บนเว็บ (Settings → Delete this repository) แล้วสร้างใหม่ตาม C1 **ก่อน** เริ่ม commit งาน |
-| หา Add people ไม่เจอ | เปิดหน้า settings ผิด repo หรือ repo ไม่ใช่ของเรา | ตรวจ URL ว่าเป็น `github.com/<username ของเรา>/310-126-lab0/settings/access` |
+| หา Add people ไม่เจอ | เปิดหน้า settings ผิด repo หรือ repo ไม่ใช่ของเรา | ตรวจ URL ว่าเป็น `github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access` |
 | ภาษาไทยในผลลัพธ์เป็นตัวอักษรเพี้ยน (Windows) | PowerShell ใช้ code page ที่ไม่รองรับ UTF-8 | ใช้ภาษาอังกฤษในข้อความที่พิมพ์ออกจากโปรแกรม |
 | ส่ง SHA ผิด | คัดลอกไม่ครบ 40 ตัว หรือยังไม่ได้ push | `git status` ต้อง up to date แล้วคัดลอกจาก `git rev-parse HEAD` ใหม่ และส่ง Form ใหม่ก่อน deadline |
