@@ -3,6 +3,13 @@
 
 ## ประกาศถึงนักศึกษา
 
+| Google Form | ลิงก์ | ทำเมื่อไร |
+|---|---|---|
+| ยืนยันรับทราบกติกา AI และการส่งงาน | https://forms.gle/Xm1w8e5WX5JYzyFn9 | ครั้งเดียว ภายในคาบ Lab 0 |
+| ส่งงาน | https://forms.gle/bBoW9cMVGLHi8Tgu8 | ทุก Lab และ Assignment ภายใน deadline |
+
+ทั้งสอง Form ต้อง login ด้วยบัญชี `@psu.ac.th`
+
 **1. สัดส่วนคะแนนของรายวิชาและการใช้ AI**
 
 | ส่วน | คะแนน | ใช้ AI ได้หรือไม่ |

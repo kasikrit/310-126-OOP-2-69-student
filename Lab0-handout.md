@@ -207,7 +207,7 @@ git status
 
 ต้องขึ้นว่า `Your branch is up to date with 'origin/main'`
 
-**E3. ส่งผ่าน Google Form ส่งงาน:** `[อาจารย์ใส่ลิงก์]` กรอกรหัสนักศึกษา, ชื่อ - นามสกุล, งาน "Lab 0", URL ของ repo (`https://github.com/<รหัสนักศึกษา>/310-126-lab0`) และ SHA 40 ตัว
+**E3. ส่งผ่าน Google Form ส่งงาน:** https://forms.gle/bBoW9cMVGLHi8Tgu8 กรอกรหัสนักศึกษา, ชื่อ - นามสกุล, งาน "Lab 0", URL ของ repo (`https://github.com/<รหัสนักศึกษา>/310-126-lab0`) และ SHA 40 ตัว
 
 **E4. ให้ TA ตรวจและลงชื่อ**
 
@@ -240,7 +240,7 @@ git status
 6. สั่งให้ AI เขียนคำตอบหรือทำงานแทน (prompt ระดับ L0) = คะแนนการใช้ AI เป็น 0 และต้องสอบปากเปล่า (viva)
 7. ใช้ AI แต่ไม่ส่งบทสนทนาใน `ai-log/` ถือว่าไม่เปิดเผยการใช้ AI
 
-กรอก Google Form ยืนยันรับทราบกติกา: `[อาจารย์ใส่ลิงก์]`
+กรอก Google Form ยืนยันรับทราบกติกา: https://forms.gle/Xm1w8e5WX5JYzyFn9
 
 ---
 
