@@ -1,5 +1,5 @@
 # Lab 0: ส่งงานด้วย Git, PROCESS.md และ AI แบบส่งเสริมการเรียนรู้
-วิชา 310-126 OOP ภาคการศึกษา 2/69 · เครื่อง Windows · ไม่มีคะแนน · ประมาณ 90 นาที
+วิชา 310-126 OOP ภาคการศึกษา 2/69 · เครื่อง Windows หรือ macOS · ไม่มีคะแนน · ประมาณ 90 นาที
 
 **เป้าหมาย:** จบคาบนี้ นักศึกษาทุกคนต้อง
 1. มี private repo `310-126-lab0` ของตัวเอง และเพิ่มอาจารย์ (`kasikrit`) เป็น collaborator แล้ว
@@ -12,11 +12,16 @@
 
 ---
 
-## ส่วน A: เตรียมเครื่อง Windows (ทำก่อนเข้าคาบ)
+## ส่วน A: เตรียมเครื่อง Windows หรือ macOS (ทำก่อนเข้าคาบ)
+
+ทำ A1 แล้วเลือกทำ **A2–A3 ตามระบบปฏิบัติการของเครื่องตัวเอง** (Windows หรือ macOS) จากนั้นทำ A4
+ตั้งแต่ส่วน B เป็นต้นไป คำสั่งเหมือนกันทั้งสองระบบ พิมพ์ใน **PowerShell** (Windows) หรือ **Terminal** (macOS)
 
 **A1. สมัครบัญชี GitHub** ที่ https://github.com/signup ด้วยอีเมลมหาวิทยาลัย `@psu.ac.th` ตั้งชื่อผู้ใช้ (username) ที่สุภาพ แล้วจดไว้
 
-**A2. ติดตั้งโปรแกรม 4 ตัว** เปิด **PowerShell** (กดปุ่ม Windows พิมพ์ `PowerShell` แล้วกด Enter) แล้วพิมพ์ทีละบรรทัด
+### Windows
+
+**A2-W. ติดตั้งโปรแกรม 4 ตัว** เปิด **PowerShell** (กดปุ่ม Windows พิมพ์ `PowerShell` แล้วกด Enter) แล้วพิมพ์ทีละบรรทัด
 
 ```powershell
 winget install --id Git.Git -e
@@ -27,7 +32,7 @@ winget install --id Microsoft.VisualStudioCode -e
 
 ถ้าหน้าจอถามให้ยอมรับข้อตกลง (agreements) ให้พิมพ์ `Y` แล้วกด Enter เมื่อติดตั้งครบ **ปิด PowerShell แล้วเปิดใหม่** จากนั้นเปิด VS Code ติดตั้ง Extension ชื่อ **Extension Pack for Java**
 
-**A3. ตรวจว่าติดตั้งครบ** (ใน PowerShell ที่เปิดใหม่)
+**A3-W. ตรวจว่าติดตั้งครบ** (ใน PowerShell ที่เปิดใหม่)
 
 ```powershell
 git --version
@@ -37,6 +42,38 @@ gh --version
 
 ทุกคำสั่งต้องแสดงหมายเลขเวอร์ชัน ถ้าขึ้นว่า "is not recognized" ให้ปิดเปิด PowerShell อีกครั้ง ถ้ายังไม่ได้ ให้ติดตั้งตัวนั้นใหม่
 
+### macOS
+
+**A2-M. ติดตั้งโปรแกรม 4 ตัว** เปิด **Terminal** (กด `Command + Space` พิมพ์ `Terminal` แล้วกด Enter)
+
+1. ติดตั้ง Homebrew (ตัวติดตั้งโปรแกรมของ macOS) ถ้ายังไม่มี ตรวจด้วย `brew --version` ถ้าขึ้น "command not found" ให้ติดตั้งด้วยคำสั่งจาก https://brew.sh
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+   ระหว่างติดตั้งจะถามรหัสผ่านเครื่อง (พิมพ์แล้วไม่แสดงบนจอ เป็นเรื่องปกติ) เมื่อเสร็จ ให้ทำตามข้อความ **Next steps** ที่ขึ้นท้ายจอ (เครื่อง Apple Silicon ต้องรันคำสั่ง 2 บรรทัดที่แสดงไว้) แล้ว **ปิด Terminal และเปิดใหม่**
+
+2. ติดตั้งโปรแกรม พิมพ์ทีละบรรทัด
+
+```bash
+brew install git gh
+brew install --cask temurin@21
+brew install --cask visual-studio-code
+```
+
+   จากนั้นเปิด VS Code ติดตั้ง Extension ชื่อ **Extension Pack for Java**
+
+**A3-M. ตรวจว่าติดตั้งครบ** (ใน Terminal ที่เปิดใหม่)
+
+```bash
+git --version
+java -version
+gh --version
+```
+
+ทุกคำสั่งต้องแสดงหมายเลขเวอร์ชัน ถ้าขึ้นว่า "command not found" ให้ปิดเปิด Terminal อีกครั้ง ถ้ายังไม่ได้ ให้ติดตั้งตัวนั้นใหม่ ถ้า `java -version` ขึ้นหน้าต่างให้ติดตั้ง Java ให้กดปิด แล้วรัน `brew install --cask temurin@21` ใหม่
+
 **A4. ตั้งค่า AI tutor** ตาม [AI-tutor-prompt.md](https://github.com/kasikrit/310-126-OOP-2-69-student/blob/main/AI-tutor-prompt.md) (ChatGPT / Claude / Gemini) และปิด GitHub Copilot หรือ AI เติมโค้ดใน VS Code
 
 ---
@@ -45,7 +82,7 @@ gh --version
 
 **B1. บอก Git ว่าเราเป็นใคร** (อีเมลต้องตรงกับบัญชี GitHub ไม่อย่างนั้น commit จะไม่ผูกกับบัญชีเรา)
 
-```powershell
+```shell
 git config --global user.name "Firstname Lastname"
 git config --global user.email "อีเมลที่ใช้สมัคร GitHub"
 git config --global --list
@@ -53,7 +90,7 @@ git config --global --list
 
 **B2. Login GitHub จากเครื่อง**
 
-```powershell
+```shell
 gh auth login
 ```
 
@@ -71,8 +108,8 @@ gh auth login
 
 **C1. สร้าง private repo จาก template ของรายวิชา และดึงลงเครื่อง**
 
-```powershell
-cd ~\Documents
+```shell
+cd ~/Documents
 gh repo create 310-126-lab0 --private --template kasikrit/310-126-lab-template --clone
 cd 310-126-lab0
 code .
@@ -96,7 +133,7 @@ repo ที่ได้มี `PROCESS.md` (แบบฟอร์มวิธี
 
 ทุก checkpoint ใช้ 4 คำสั่งเดิม
 
-```powershell
+```shell
 git status
 git add .
 git commit -m "ข้อความบอกว่าทำอะไร"
@@ -129,7 +166,7 @@ public class HelloWorld {
 }
 ```
 
-> ใช้ชื่อเป็นภาษาอังกฤษในโปรแกรม เพราะ PowerShell อาจแสดงภาษาไทยเป็นตัวอักษรเพี้ยน
+> ใช้ชื่อเป็นภาษาอังกฤษในโปรแกรม เพราะ PowerShell บน Windows อาจแสดงภาษาไทยเป็นตัวอักษรเพี้ยน
 
 5. กรอก **ขั้น 2** ใน `PROCESS.md` (ลำดับที่เขียน, ปัญหาที่เจอ, ถาม AI ข้อไหน ระดับไหน, ชื่อไฟล์ใน `ai-log/`)
 6. commit + push ด้วยข้อความ `Step 2: write HelloWorld with AI tutor log`
@@ -137,7 +174,7 @@ public class HelloWorld {
 ### Checkpoint 3: ทดสอบแบบทำนายก่อนรัน และสะท้อนการเรียนรู้
 1. ใน `PROCESS.md` ขั้น 3 เขียนผลที่ **คาดว่า** จะได้ก่อน แล้วจึงรัน
 
-```powershell
+```shell
 java HelloWorld.java
 ```
 
@@ -154,7 +191,7 @@ java HelloWorld.java
 
 **E1. ดู SHA เต็มของงานที่จะส่ง** (commit ล่าสุดที่ push แล้ว)
 
-```powershell
+```shell
 git rev-parse HEAD
 ```
 
@@ -162,7 +199,7 @@ git rev-parse HEAD
 
 **E2. ตรวจว่า push แล้วจริง**
 
-```powershell
+```shell
 git status
 ```
 
@@ -209,13 +246,15 @@ git status
 
 | อาการ | สาเหตุ | วิธีแก้ |
 |---|---|---|
-| `winget` ไม่รู้จัก | Windows รุ่นเก่า ไม่มี App Installer | ติดตั้ง "App Installer" จาก Microsoft Store หรือดาวน์โหลดตัวติดตั้งจากเว็บของแต่ละโปรแกรม |
-| คำสั่ง `git` / `java` / `gh` is not recognized | ยังไม่ได้ปิดเปิด PowerShell หลังติดตั้ง | ปิด PowerShell แล้วเปิดใหม่ |
+| `winget` ไม่รู้จัก (Windows) | Windows รุ่นเก่า ไม่มี App Installer | ติดตั้ง "App Installer" จาก Microsoft Store หรือดาวน์โหลดตัวติดตั้งจากเว็บของแต่ละโปรแกรม |
+| คำสั่ง `git` / `java` / `gh` is not recognized (Windows) หรือ command not found (macOS) | ยังไม่ได้ปิดเปิด PowerShell / Terminal หลังติดตั้ง | ปิด PowerShell / Terminal แล้วเปิดใหม่ |
+| `brew` command not found หลังติดตั้ง Homebrew (macOS) | ยังไม่ได้ทำ Next steps ที่ตัวติดตั้งแสดง | รันคำสั่งใน Next steps ที่ขึ้นท้ายการติดตั้ง แล้วเปิด Terminal ใหม่ |
+| `code .` command not found (macOS) | VS Code ยังไม่ได้ลงคำสั่ง `code` | เปิด VS Code กด `Command + Shift + P` พิมพ์ `Shell Command: Install 'code' command in PATH` แล้วกด Enter |
 | `git push` ขึ้น **rejected** | บน GitHub มี commit ที่เครื่องเรายังไม่มี (เช่น แก้ไฟล์บนเว็บ) | `git pull` แล้ว `git push` ใหม่ **ห้ามใช้ `--force`** |
 | push แล้วขึ้น authentication failed | ยังไม่ได้ login หรือ login หมดอายุ | `gh auth status` แล้ว `gh auth login` ใหม่ |
 | commit บน GitHub ไม่ขึ้นชื่อบัญชีเรา | อีเมลใน `git config` ไม่ตรงกับบัญชี GitHub | `git config --global user.email "อีเมลบัญชี GitHub"` แล้ว commit ใหม่ |
 | `gh repo create` ขึ้นว่าชื่อซ้ำ | เคยสร้าง repo ชื่อนี้แล้ว | ใช้ repo เดิม: `gh repo clone 310-126-lab0` |
 | ใน repo ไม่มี `PROCESS.md` | สร้าง repo โดยไม่ใส่ `--template` | ลบ repo บนเว็บ (Settings → Delete this repository) แล้วสร้างใหม่ตาม C1 **ก่อน** เริ่ม commit งาน |
 | หา Add people ไม่เจอ | เปิดหน้า settings ผิด repo หรือ repo ไม่ใช่ของเรา | ตรวจ URL ว่าเป็น `github.com/<username ของเรา>/310-126-lab0/settings/access` |
-| ภาษาไทยในผลลัพธ์เป็นตัวอักษรเพี้ยน | PowerShell ใช้ code page ที่ไม่รองรับ UTF-8 | ใช้ภาษาอังกฤษในข้อความที่พิมพ์ออกจากโปรแกรม |
+| ภาษาไทยในผลลัพธ์เป็นตัวอักษรเพี้ยน (Windows) | PowerShell ใช้ code page ที่ไม่รองรับ UTF-8 | ใช้ภาษาอังกฤษในข้อความที่พิมพ์ออกจากโปรแกรม |
 | ส่ง SHA ผิด | คัดลอกไม่ครบ 40 ตัว หรือยังไม่ได้ push | `git status` ต้อง up to date แล้วคัดลอกจาก `git rev-parse HEAD` ใหม่ และส่ง Form ใหม่ก่อน deadline |
