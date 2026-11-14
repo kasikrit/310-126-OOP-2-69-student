@@ -260,7 +260,7 @@ git status
 | คำสั่ง `git` / `java` / `gh` is not recognized (Windows) หรือ command not found (macOS) | ยังไม่ได้ปิดเปิด PowerShell / Terminal หลังติดตั้ง | ปิด PowerShell / Terminal แล้วเปิดใหม่ |
 | `brew` command not found หลังติดตั้ง Homebrew (macOS) | ยังไม่ได้ทำ Next steps ที่ตัวติดตั้งแสดง | รันคำสั่งใน Next steps ที่ขึ้นท้ายการติดตั้ง แล้วเปิด Terminal ใหม่ |
 | `code .` command not found (macOS) | VS Code ยังไม่ได้ลงคำสั่ง `code` | เปิด VS Code กด `Command + Shift + P` พิมพ์ `Shell Command: Install 'code' command in PATH` แล้วกด Enter |
-| `git push` ขึ้น **rejected** | บน GitHub มี commit ที่เครื่องเรายังไม่มี (เช่น แก้ไฟล์บนเว็บ) | `git pull` แล้ว `git push` ใหม่ **ห้ามใช้ `--force`** |
+| `git push` ขึ้น **rejected** | บน GitHub มี commit ที่เครื่องเรายังไม่มี (เช่น แก้ไฟล์บนเว็บ หรืออาจารย์ commit `FEEDBACK.md` ผลตรวจเข้ามา) | `git pull` แล้ว `git push` ใหม่ **ห้ามใช้ `--force`** |
 | push แล้วขึ้น authentication failed | ยังไม่ได้ login หรือ login หมดอายุ | `gh auth status` แล้ว `gh auth login` ใหม่ |
 | commit บน GitHub ไม่ขึ้นชื่อบัญชีเรา | อีเมลใน `git config` ไม่ตรงกับบัญชี GitHub | `git config --global user.email "อีเมลบัญชี GitHub"` แล้ว commit ใหม่ |
 | `gh repo create` ขึ้นว่าชื่อซ้ำ | เคยสร้าง repo ชื่อนี้แล้ว | ใช้ repo เดิม: `gh repo clone 310-126-lab0` |
