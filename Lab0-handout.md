@@ -177,7 +177,8 @@ public class HelloWorld {
 1. ใน `PROCESS.md` ขั้น 3 เขียนผลที่ **คาดว่า** จะได้ก่อน แล้วจึงรัน
 
 ```shell
-java HelloWorld.java
+javac HelloWorld.java
+java HelloWorld
 ```
 
 2. กรอกผลจริงเทียบกับที่ทำนายไว้
