@@ -3,7 +3,7 @@
 
 **เป้าหมาย:** จบคาบนี้ นักศึกษาทุกคนต้อง
 1. มี private repo `310-126-lab0` ของตัวเอง และเพิ่มอาจารย์ (`kasikrit`) เป็น collaborator แล้ว
-2. ส่งงานครบตามลำดับ: **`PROCESS.md` ขั้น 1 (เข้าใจโจทย์และออกแบบ) → `ai-log/` (บทสนทนากับ AI) → source code + `outputs.txt` (ผลการรันจาก `java Run.java`)**
+2. ส่งงานครบตามลำดับ: **`PROCESS.md` ขั้น 1 (เข้าใจโจทย์และออกแบบ) → `ai-log/` (บทสนทนากับ AI) → source code + `outputs.txt` (ผลการรันจาก `javac *.java` แล้ว `java Run`)**
 3. ส่ง commit SHA ของงานผ่าน Google Form ได้
 
 เอกสารของรายวิชาทั้งหมด: https://github.com/kasikrit/310-126-OOP-2-69-student
@@ -120,7 +120,7 @@ code .
 repo ที่ได้มีไฟล์จาก template มาให้แล้ว ไม่ต้องสร้างเอง:
 - `PROCESS.md`: ขั้น 1 เข้าใจโจทย์และออกแบบ + คำรับรอง
 - `ai-log/`: โฟลเดอร์เก็บบทสนทนากับ AI
-- `Run.java`: ตัวช่วยรันของรายวิชา บันทึกผลการรันลง `outputs.txt` (ห้ามแก้ทั้งสองไฟล์)
+- `Run.java`: ตัวช่วยรันของรายวิชา (compile ด้วย `javac *.java` แล้วรันด้วย `java Run <ชื่อคลาส>`) บันทึกผลการรันลง `outputs.txt` (ห้ามแก้ทั้งสองไฟล์)
 
 - ชื่อ repo ต้องเป็น `310-126-lab0` ตามนี้พอดี (งานถัดไปใช้ `310-126-lab1`, `310-126-lab2`, ...)
 - ต้องเป็น **private** ห้ามเป็น public เพื่อไม่ให้ผู้อื่นคัดลอกงาน
@@ -179,19 +179,32 @@ public class HelloWorld {
 
 5. commit + push
 
-### Checkpoint 3: รันด้วย `Run.java` และ commit หลังรันแต่ละครั้ง
-1. รันโปรแกรมด้วยคำสั่งนี้ (เหมือนกันทั้ง PowerShell และ Terminal ต้องอยู่ในโฟลเดอร์ `310-126-lab0`)
+### Checkpoint 3: compile แล้วรันด้วย `Run` และ commit หลังรันแต่ละครั้ง
+ทุกครั้งทำ 2 ขั้น (เหมือนกันทั้ง PowerShell และ Terminal ต้องอยู่ในโฟลเดอร์ `310-126-lab0`)
+
+**ขั้น 1: compile**
 
 ```shell
-java Run.java HelloWorld
+javac *.java
 ```
 
-   `Run.java` จะ compile และรัน `HelloWorld` แสดงผลบนจอ แล้ว **ต่อท้ายผลการรันลง `outputs.txt` เอง** (วันเวลา, คำสั่ง, รหัส SHA-256 ของไฟล์ `.java`, exit code และผลลัพธ์ทั้งหมด รวม compile error)
-   ถ้าโปรแกรมรับค่าทาง argument ให้พิมพ์ต่อท้าย เช่น `java Run.java HelloWorld 1 2 3` และครอบ argument ที่มีเว้นวรรคด้วยเครื่องหมายคำพูด เช่น `java Run.java Greeter "Somchai Jaidee"` ถ้าโปรแกรมรับค่าจากคีย์บอร์ด ให้ใส่ค่าในไฟล์ `input.txt` (`Run.java` ส่งให้โปรแกรมเอง)
-2. **commit หลังรันแต่ละครั้ง** (1 การรัน = 1 commit) เพื่อให้อาจารย์รันซ้ำ (replay) ทุกครั้งที่บันทึกได้
-3. ถ้าผลยังไม่ถูก (เช่น compile error หรือรหัสยังเป็น `69xxxxxxxx`) ให้แก้โค้ด รัน `java Run.java HelloWorld` ใหม่ แล้ว commit อีกครั้ง
-4. **ห้ามแก้ `outputs.txt` เอง** และห้ามแก้ `Run.java` อาจารย์รันโค้ดทุก commit ซ้ำแล้วเทียบกับผลใน `outputs.txt`
-5. เมื่อผลถูกแล้ว ติ๊ก **คำรับรอง** ท้าย `PROCESS.md` ให้ครบ (เปลี่ยน `[ ]` เป็น `[x]`) แล้ว commit + push เป็น commit สุดท้าย
+   compile โค้ดของเราและ `Run.java` เป็นไฟล์ `.class` (ไม่ถูก commit) ถ้ามี compile error จะแสดงบนจอ ให้แก้โค้ดแล้ว `javac *.java` ใหม่จนผ่าน
+
+**ขั้น 2: run**
+
+```shell
+java Run HelloWorld
+```
+
+   `Run` จะรัน `HelloWorld` แสดงผลบนจอ แล้ว **ต่อท้ายผลการรันลง `outputs.txt` เอง** (วันเวลา, คำสั่ง, รหัส SHA-256 ของไฟล์ `.java`, exit code และผลลัพธ์ทั้งหมด รวม error ตอนรัน)
+   - ถ้าโปรแกรมรับค่าทาง argument ให้พิมพ์ต่อท้าย เช่น `java Run HelloWorld 1 2 3` (`1 2 3` ส่งให้ `main(String[] args)` ตามลำดับ) และครอบ argument ที่มีเว้นวรรคด้วยเครื่องหมายคำพูด เช่น `java Run Greeter "Somchai Jaidee"`
+   - ถ้าโปรแกรมรับค่าจากคีย์บอร์ด ให้ใส่ค่าในไฟล์ `input.txt` (`Run` ส่งให้โปรแกรมเอง)
+   - ถ้าแก้โค้ดแล้วยังไม่ได้ compile `Run` จะไม่รันและไม่บันทึก แล้วบอกให้ `javac *.java` ก่อน
+
+1. **commit หลังรันแต่ละครั้ง** (1 การรัน = 1 commit) เพื่อให้อาจารย์รันซ้ำ (replay) ทุกครั้งที่บันทึกได้
+2. ถ้าผลยังไม่ถูก (เช่น รหัสยังเป็น `69xxxxxxxx`) ให้แก้โค้ด แล้ว `javac *.java` + `java Run HelloWorld` ใหม่ และ commit อีกครั้ง
+3. **ห้ามแก้ `outputs.txt` เอง** และห้ามแก้ `Run.java` อาจารย์รันโค้ดทุก commit ซ้ำแล้วเทียบกับผลใน `outputs.txt`
+4. เมื่อผลถูกแล้ว ติ๊ก **คำรับรอง** ท้าย `PROCESS.md` ให้ครบ (เปลี่ยน `[ ]` เป็น `[x]`) แล้ว commit + push เป็น commit สุดท้าย
 
 ตรวจด้วย `git log --oneline` ต้องเห็น commit ของเราอย่างน้อย 3 รายการ และ push แล้วอย่างน้อย 3 ครั้ง
 
@@ -224,7 +237,7 @@ git status
 | repo `310-126-lab0` เป็น private และมี `kasikrit` + TA 2 คนเป็น collaborator (Pending invite หรือรับแล้ว) | ☐ |
 | `PROCESS.md` กรอกขั้น 1 ครบ 3 ข้อ (commit ก่อนโค้ด) และติ๊กคำรับรองครบ | ☐ |
 | `ai-log/` มีบทสนทนาที่เห็น tutor prompt เป็นข้อความแรก และ AI ปฏิเสธการเขียนโค้ดให้ | ☐ |
-| `java Run.java HelloWorld` รันได้, `outputs.txt` มีบล็อกผลการรัน และมี commit ของนักศึกษาอย่างน้อย 3 รายการ | ☐ |
+| `javac *.java` และ `java Run HelloWorld` รันได้, `outputs.txt` มีบล็อกผลการรัน และมี commit ของนักศึกษาอย่างน้อย 3 รายการ | ☐ |
 | ส่ง SHA ผ่าน Google Form แล้ว และ SHA ตรงกับ `git rev-parse HEAD` | ☐ |
 | กรอก Google Form ยืนยันรับทราบกติกาแล้ว | ☐ |
 
@@ -247,7 +260,7 @@ git status
 6. คำขอให้ AI เขียนคำตอบหรือทำงานแทน (ระดับ L0): AI ปฏิเสธและไม่ได้นำผลไปใช้ = หักข้อระดับคำถาม 10 คะแนนต่อครั้ง · AI ทำให้แล้วนำไปใช้ = ข้อระดับคำถามได้ 0 และต้องสอบปากเปล่า (viva)
 7. ใช้ AI แต่ไม่ส่งบทสนทนาใน `ai-log/` ถือว่าไม่เปิดเผยการใช้ AI ใช้ได้เฉพาะ AI แบบแชต และส่ง log เป็น `.md` หรือ PDF เท่านั้น
 8. งานหลัง Lab 0 ที่ไม่ใช้ AI เลย: ใส่ `ai-log/NONE.md` แล้ว **TA เรียก viva ทุกคน** และใช้คะแนน viva เป็นคะแนนส่วนการเรียนรู้ 50 คะแนน (Lab 0 ต้องฝึกใช้ AI tutor อย่างน้อย 1 ครั้ง)
-9. รันโปรแกรมด้วย `java Run.java <ชื่อคลาส>` ทุกครั้ง แล้ว commit ห้ามแก้ `outputs.txt` เอง
+9. ทุกครั้ง compile ด้วย `javac *.java` แล้วรันด้วย `java Run <ชื่อคลาส>` แล้ว commit ห้ามแก้ `outputs.txt` เอง
 
 กรอก Google Form ยืนยันรับทราบกติกา: https://forms.gle/Xm1w8e5WX5JYzyFn9
 
@@ -269,8 +282,10 @@ git status
 | หา Add people ไม่เจอ | เปิดหน้า settings ผิด repo หรือ repo ไม่ใช่ของเรา | ตรวจ URL ว่าเป็น `github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access` |
 | ภาษาไทยในผลลัพธ์เป็นตัวอักษรเพี้ยน (Windows) | PowerShell ใช้ code page ที่ไม่รองรับ UTF-8 | ใช้ภาษาอังกฤษในข้อความที่พิมพ์ออกจากโปรแกรม |
 | ส่ง SHA ผิด | คัดลอกไม่ครบ 40 ตัว หรือยังไม่ได้ push | `git status` ต้อง up to date แล้วคัดลอกจาก `git rev-parse HEAD` ใหม่ และส่ง Form ใหม่ก่อน deadline |
-| `Run.java: HelloWorld.java not found` | รันนอกโฟลเดอร์ repo หรือชื่อไฟล์ไม่ตรงกับชื่อคลาส | `cd` เข้าโฟลเดอร์ `310-126-lab0` ก่อน และตั้งชื่อไฟล์ให้ตรงกับชื่อคลาส (ตัวพิมพ์เล็ก/ใหญ่ต้องตรง) |
-| `Run.java: no Java compiler found` | เครื่องมีแค่ JRE ไม่ใช่ JDK | ติดตั้ง JDK ตาม A2 (Temurin 21) แล้วเปิด PowerShell / Terminal ใหม่ |
-| ลืม commit หลังรันครั้งสุดท้าย (หรือแก้โค้ดหลังรันครั้งสุดท้าย) | บล็อกสุดท้ายใน `outputs.txt` ไม่ตรงกับโค้ดที่ส่ง | รัน `java Run.java HelloWorld` อีกครั้งกับโค้ดล่าสุด แล้ว `git add .` + `git commit` + `git push` **ห้ามลบหรือแก้บล็อกเดิม** ใน `outputs.txt` |
+| `Error: Could not find or load main class Run` | ยังไม่ได้ compile หรือ `javac *.java` ครั้งล่าสุดมี error จึงยังไม่มี `Run.class` | แก้ compile error แล้ว `javac *.java` ใหม่จนผ่าน และต้องอยู่ในโฟลเดอร์ `310-126-lab0` |
+| `Run: compile first, ...` | แก้ `.java` หลัง compile ครั้งล่าสุด | `javac *.java` แล้ว `java Run HelloWorld` ใหม่ (ครั้งที่ถูกปฏิเสธไม่ถูกบันทึก) |
+| `Run: HelloWorld.java not found` | รันนอกโฟลเดอร์ repo หรือชื่อไฟล์ไม่ตรงกับชื่อคลาส | `cd` เข้าโฟลเดอร์ `310-126-lab0` ก่อน และตั้งชื่อไฟล์ให้ตรงกับชื่อคลาส (ตัวพิมพ์เล็ก/ใหญ่ต้องตรง) |
+| `javac` is not recognized / command not found | เครื่องมีแค่ JRE ไม่ใช่ JDK หรือยังไม่ได้เปิด PowerShell / Terminal ใหม่ | ติดตั้ง JDK ตาม A2 (Temurin 21) แล้วเปิด PowerShell / Terminal ใหม่ |
+| ลืม commit หลังรันครั้งสุดท้าย (หรือแก้โค้ดหลังรันครั้งสุดท้าย) | บล็อกสุดท้ายใน `outputs.txt` ไม่ตรงกับโค้ดที่ส่ง | `javac *.java` แล้ว `java Run HelloWorld` อีกครั้งกับโค้ดล่าสุด แล้ว `git add .` + `git commit` + `git push` **ห้ามลบหรือแก้บล็อกเดิม** ใน `outputs.txt` |
 | รันหลายครั้งก่อน commit ครั้งเดียว | ไม่ผิดกติกา แต่บล็อกที่โค้ดไม่อยู่ใน commit ใดอาจารย์ตรวจซ้ำไม่ได้ | ครั้งต่อไป commit หลังรันแต่ละครั้ง |
-| โปรแกรมค้าง ไม่จบ | โปรแกรมรอรับค่าจากคีย์บอร์ด หรือวนไม่รู้จบ | ใส่ค่าที่ต้องพิมพ์ใน `input.txt` `Run.java` หยุดโปรแกรมเองหลัง 30 วินาที |
+| โปรแกรมค้าง ไม่จบ | โปรแกรมรอรับค่าจากคีย์บอร์ด หรือวนไม่รู้จบ | ใส่ค่าที่ต้องพิมพ์ใน `input.txt` `Run` หยุดโปรแกรมเองหลัง 30 วินาที |
