@@ -106,7 +106,7 @@ gh auth login
 
 ---
 
-## ส่วน C: สร้าง repo ของตัวเองและเพิ่มอาจารย์เป็น collaborator
+## ส่วน C: สร้าง repo ของตัวเองและ เพิ่มอาจารย์และ TA เป็น collaborators
 
 **C1. สร้าง private repo จาก template ของรายวิชา และดึงลงเครื่อง**
 
@@ -125,7 +125,7 @@ repo ที่ได้มีไฟล์จาก template มาให้แ�
 - ชื่อ repo ต้องเป็น `310-126-lab0` ตามนี้พอดี (งานถัดไปใช้ `310-126-lab1`, `310-126-lab2`, ...)
 - ต้องเป็น **private** ห้ามเป็น public เพื่อไม่ให้ผู้อื่นคัดลอกงาน
 
-**C2. เพิ่มอาจารย์และ TA เป็น collaborator 3 บัญชี** (ทำบนเว็บ)
+**C2. เพิ่มอาจารย์และ TA เป็น collaborators 3 บัญชี** (ทำบนเว็บ)
 1. เปิด `https://github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access`
 2. กด **Add people** → พิมพ์ `kasikrit` → เลือก → กด **Add kasikrit to this repository**
 3. ทำซ้ำข้อ 2 กับ TA อีก 2 บัญชี: `[username ของ TA1]` และ `[username ของ TA2]`
