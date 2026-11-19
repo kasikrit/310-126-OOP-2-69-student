@@ -128,7 +128,7 @@ repo ที่ได้มีไฟล์จาก template มาให้แ�
 **C2. เพิ่มอาจารย์และ TA เป็น collaborator 3 บัญชี** (ทำบนเว็บ)
 1. เปิด `https://github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access`
 2. กด **Add people** → พิมพ์ `kasikrit` → เลือก → กด **Add kasikrit to this repository**
-3. ทำซ้ำข้อ 2 กับ TA อีก 2 บัญชี: `[username ของ TA1]` และ `kroekchanwit`
+3. ทำซ้ำข้อ 2 กับ TA อีก 2 บัญชี: `tonethana` และ `kroekchanwit`
 4. หน้าจอต้องแสดงทั้ง 3 บัญชี สถานะ **Pending invite** (อาจารย์และ TA จะกดรับเอง) **ห้ามลบคำเชิญจนจบภาคการศึกษา**
 
 ---
