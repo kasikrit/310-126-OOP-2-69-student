@@ -15,4 +15,4 @@
 gh repo create 310-126-lab0 --private --template kasikrit/310-126-lab-template --clone
 ```
 
-แล้วเพิ่ม `kasikrit` เป็น collaborator และส่ง commit SHA ผ่าน Google Form ตาม handout
+แล้วเพิ่ม collaborator 3 บัญชี: `kasikrit` (อาจารย์) + TA 2 คน `tonethana` และ `kroekchanwit` และส่ง commit SHA ผ่าน Google Form ตาม handout
