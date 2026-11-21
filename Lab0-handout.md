@@ -2,13 +2,15 @@
 วิชา 310-126 OOP ภาคการศึกษา 2/69 · เครื่อง Windows หรือ macOS · ไม่มีคะแนน · ประมาณ 90 นาที
 
 **เป้าหมาย:** จบคาบนี้ นักศึกษาทุกคนต้อง
-1. มี private repo `310-126-lab0` ของตัวเอง และเพิ่มอาจารย์ (`kasikrit`) เป็น collaborator แล้ว
-2. ส่งงานครบตามลำดับ: **`PROCESS.md` ขั้น 1 (เข้าใจโจทย์และออกแบบ) → `ai-log/` (บทสนทนากับ AI) → source code + `outputs.txt` (ผลการรันจาก `javac *.java` แล้ว `java Run`)**
+1. มี private repo **`310-126-oop`** ของตัวเอง (repo เดียวใช้ทั้งภาค) และเพิ่ม collaborator 3 บัญชีแล้ว: `kasikrit` (อาจารย์) + TA `tonethana` และ `kroekchanwit`
+2. สร้างโฟลเดอร์ `Lab0/` ด้วย `java NewTask Lab0` แล้วส่งงานครบตามลำดับ: **`PROCESS.md` ขั้น 1 (เข้าใจโจทย์และออกแบบ) → `ai-log/` (บทสนทนากับ AI) → source code + `outputs.txt` (ผลการรันจาก `javac *.java` แล้ว `java Run`)**
 3. ส่ง commit SHA ของงานผ่าน Google Form ได้
 
 เอกสารของรายวิชาทั้งหมด: https://github.com/kasikrit/310-126-OOP-2-69-student
 
-**ข้อตกลงรายวิชา:** การสร้าง repo + เพิ่ม collaborator และการส่ง SHA ผ่าน Google Form เป็นเงื่อนไขของการส่งงาน **ทุกชิ้น** ไม่ทำ = ไม่ได้ส่งงาน (0 คะแนน)
+**เคยสร้าง repo `310-126-lab0` ไปแล้ว:** ไม่ต้องสร้างใหม่ ให้ทำ [ส่วน H: ย้ายจาก 310-126-lab0](#move) ครั้งเดียว แล้วทำงานต่อใน `Lab0/`
+
+**ข้อตกลงรายวิชา:** การมี repo + เพิ่ม collaborator และการส่ง SHA ผ่าน Google Form เป็นเงื่อนไขของการส่งงาน **ทุกชิ้น** ไม่ทำ = ไม่ได้ส่งงาน (0 คะแนน)
 
 ---
 
@@ -106,36 +108,47 @@ gh auth login
 
 ---
 
-## ส่วน C: สร้าง repo ของตัวเองและเพิ่มอาจารย์เป็น collaborator
+## ส่วน C: สร้าง repo ของรายวิชา (ครั้งเดียวทั้งภาค)
 
-**C1. สร้าง private repo จาก template ของรายวิชา และดึงลงเครื่อง**
+**C1. สร้าง private repo `310-126-oop` จาก template ของรายวิชา และดึงลงเครื่อง**
 
 ```shell
 cd ~/Documents
-gh repo create 310-126-lab0 --private --template kasikrit/310-126-lab-template --clone
-cd 310-126-lab0
+gh repo create 310-126-oop --private --template kasikrit/310-126-lab-template --clone
+cd 310-126-oop
 code .
 ```
 
-repo ที่ได้มีไฟล์จาก template มาให้แล้ว ไม่ต้องสร้างเอง:
-- `PROCESS.md`: ขั้น 1 เข้าใจโจทย์และออกแบบ + คำรับรอง
-- `ai-log/`: โฟลเดอร์เก็บบทสนทนากับ AI
-- `Run.java`: ตัวช่วยรันของรายวิชา (compile ด้วย `javac *.java` แล้วรันด้วย `java Run <ชื่อคลาส>`) บันทึกผลการรันลง `outputs.txt` (ห้ามแก้ทั้งสองไฟล์)
-
-- ชื่อ repo ต้องเป็น `310-126-lab0` ตามนี้พอดี (งานถัดไปใช้ `310-126-lab1`, `310-126-lab2`, ...)
+- ชื่อ repo ต้องเป็น `310-126-oop` ตามนี้พอดี **ใช้ repo นี้ repo เดียวทั้งภาค** ทุก Lab และ Assignment เป็นโฟลเดอร์ย่อย เช่น `Lab0/`, `Assignment1/`
 - ต้องเป็น **private** ห้ามเป็น public เพื่อไม่ให้ผู้อื่นคัดลอกงาน
+- ที่ root ของ repo มีไฟล์จาก template: `NewTask.java` (สร้างโฟลเดอร์งาน), `_template/` (ต้นแบบของโฟลเดอร์งาน ห้ามแก้), `Migrate.java` (ใช้เฉพาะคนที่ย้ายจาก `310-126-lab0`)
 
-**C2. เพิ่มอาจารย์และ TA เป็น collaborator 3 บัญชี** (ทำบนเว็บ)
-1. เปิด `https://github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access`
+**C2. เพิ่มอาจารย์และ TA เป็น collaborator 3 บัญชี** (ทำบนเว็บ **ครั้งเดียวทั้งภาค**)
+1. เปิด `https://github.com/<รหัสนักศึกษา>/310-126-oop/settings/access`
 2. กด **Add people** → พิมพ์ `kasikrit` → เลือก → กด **Add kasikrit to this repository**
 3. ทำซ้ำข้อ 2 กับ TA อีก 2 บัญชี: `tonethana` และ `kroekchanwit`
 4. หน้าจอต้องแสดงทั้ง 3 บัญชี สถานะ **Pending invite** (อาจารย์และ TA จะกดรับเอง) **ห้ามลบคำเชิญจนจบภาคการศึกษา**
+
+**C3. compile ตัวช่วยสร้างโฟลเดอร์งาน** (ครั้งเดียว ที่ root ของ repo)
+
+```shell
+javac NewTask.java
+```
 
 ---
 
 ## ส่วน D: ทำงานตามลำดับ และ commit ทุก checkpoint
 
 งานของ Lab 0: **โปรแกรม `HelloWorld.java` ที่พิมพ์ `Hello, World!` ตามด้วยรหัสนักศึกษาและชื่อของตัวเอง**
+
+**D0. สร้างโฟลเดอร์ของงาน** (ทุกงาน ที่ root ของ repo `310-126-oop`; ชื่อโฟลเดอร์ประกาศพร้อมโจทย์ เช่น `Lab0`, `Assignment1`)
+
+```shell
+java NewTask Lab0
+cd Lab0
+```
+
+จะได้โฟลเดอร์ `Lab0/` ที่มี `PROCESS.md` (ขั้น 1 + คำรับรอง), `ai-log/`, `Run.java` (ตัวช่วยรันของรายวิชา ห้ามแก้) และ `outputs.txt` (ผลการรัน ห้ามแก้เอง) **ทุกคำสั่งจากนี้ทำในโฟลเดอร์ `Lab0`**
 
 ทุก checkpoint ใช้ 4 คำสั่งเดิม (ข้อความ commit เขียนอะไรก็ได้ที่บอกว่าทำอะไร)
 
@@ -180,7 +193,7 @@ public class HelloWorld {
 5. commit + push
 
 ### Checkpoint 3: compile แล้วรันด้วย `Run` และ commit หลังรันแต่ละครั้ง
-ทุกครั้งทำ 2 ขั้น (เหมือนกันทั้ง PowerShell และ Terminal ต้องอยู่ในโฟลเดอร์ `310-126-lab0`)
+ทุกครั้งทำ 2 ขั้น (เหมือนกันทั้ง PowerShell และ Terminal ต้องอยู่ในโฟลเดอร์ของงาน เช่น `310-126-oop/Lab0`)
 
 **ขั้น 1: compile**
 
@@ -228,13 +241,13 @@ git status
 
 ต้องขึ้นว่า `Your branch is up to date with 'origin/main'`
 
-**E3. ส่งผ่าน Google Form ส่งงาน:** https://forms.gle/bBoW9cMVGLHi8Tgu8 กรอกรหัสนักศึกษา, ชื่อ - นามสกุล, งาน "Lab 0", URL ของ repo (`https://github.com/<รหัสนักศึกษา>/310-126-lab0`) และ SHA 40 ตัว
+**E3. ส่งผ่าน Google Form ส่งงาน:** https://forms.gle/bBoW9cMVGLHi8Tgu8 กรอกรหัสนักศึกษา, ชื่อ - นามสกุล, งาน "Lab 0", URL ของ repo (`https://github.com/<รหัสนักศึกษา>/310-126-oop` เหมือนเดิมทุกงาน) และ SHA 40 ตัว
 
 **E4. ให้ TA ตรวจและลงชื่อ**
 
 | รายการที่ TA ตรวจ | ผ่าน |
 |---|---|
-| repo `310-126-lab0` เป็น private และมี `kasikrit` + TA 2 คนเป็น collaborator (Pending invite หรือรับแล้ว) | ☐ |
+| repo `310-126-oop` เป็น private, มีโฟลเดอร์ `Lab0/` และมี `kasikrit` + TA 2 คนเป็น collaborator (Pending invite หรือรับแล้ว) | ☐ |
 | `PROCESS.md` กรอกขั้น 1 ครบ 3 ข้อ (commit ก่อนโค้ด) และติ๊กคำรับรองครบ | ☐ |
 | `ai-log/` มีบทสนทนาที่เห็น tutor prompt เป็นข้อความแรก และ AI ปฏิเสธการเขียนโค้ดให้ | ☐ |
 | `javac *.java` และ `java Run HelloWorld` รันได้, `outputs.txt` มีบล็อกผลการรัน และมี commit ของนักศึกษาอย่างน้อย 3 รายการ | ☐ |
@@ -245,8 +258,8 @@ git status
 
 ## ส่วน F: กติกาที่ใช้กับทุก Lab และ Assignment
 
-1. **ข้อตกลงรายวิชา:** บัญชี GitHub ใช้รหัสนักศึกษาเป็น username และทุกงานต้องอยู่ใน private repo ของตัวเองที่มี `kasikrit` และ TA 2 คนเป็น collaborator และส่ง SHA ผ่าน Google Form ภายใน deadline ไม่ทำ = ไม่ได้ส่งงาน (0 คะแนน)
-2. ระยะเวลาทำงานแต่ละชิ้น **7 วัน** ต้อง push อย่างน้อย **N ครั้ง** ภายใน 7 วันนั้น (อาจารย์กำหนด N รายงานและประกาศพร้อมโจทย์ Lab 0: N = 3)
+1. **ข้อตกลงรายวิชา:** บัญชี GitHub ใช้รหัสนักศึกษาเป็น username และทุกงานต้องอยู่ในโฟลเดอร์ของงานนั้น (สร้างด้วย `java NewTask <ชื่อโฟลเดอร์>`) ใน private repo `310-126-oop` ของตัวเองที่มี `kasikrit` และ TA 2 คนเป็น collaborator และส่ง SHA ผ่าน Google Form ภายใน deadline ไม่ทำ = ไม่ได้ส่งงาน (0 คะแนน)
+2. ระยะเวลาทำงานแต่ละชิ้น **7 วัน** ต้อง push อย่างน้อย **N ครั้ง** ภายใน 7 วันนั้น (นับเฉพาะ push ที่มีการเปลี่ยนไฟล์ในโฟลเดอร์ของงานนั้น) (อาจารย์กำหนด N รายงานและประกาศพร้อมโจทย์ Lab 0: N = 3)
 3. งานที่ตรวจคือ **สำเนา ณ SHA ที่ส่ง** ซึ่งอาจารย์เก็บไว้ตอน deadline แก้ repo ภายหลังไม่มีผล
 4. **ห้าม** `git push --force` ห้ามลบหรือแก้ประวัติ commit ห้ามลบ repo และห้ามถอนสิทธิ์ `kasikrit`
 5. สิ่งที่ส่งและคะแนนต่อชิ้นงาน (100) เรียงตามความสำคัญ:
@@ -277,15 +290,66 @@ git status
 | `git push` ขึ้น **rejected** | บน GitHub มี commit ที่เครื่องเรายังไม่มี (เช่น แก้ไฟล์บนเว็บ หรืออาจารย์ commit `FEEDBACK.md` ผลตรวจเข้ามา) | `git pull` แล้ว `git push` ใหม่ **ห้ามใช้ `--force`** |
 | push แล้วขึ้น authentication failed | ยังไม่ได้ login หรือ login หมดอายุ | `gh auth status` แล้ว `gh auth login` ใหม่ |
 | commit บน GitHub ไม่ขึ้นชื่อบัญชีเรา | อีเมลใน `git config` ไม่ตรงกับบัญชี GitHub | `git config --global user.email "อีเมลบัญชี GitHub"` แล้ว commit ใหม่ |
-| `gh repo create` ขึ้นว่าชื่อซ้ำ | เคยสร้าง repo ชื่อนี้แล้ว | ใช้ repo เดิม: `gh repo clone 310-126-lab0` |
-| ใน repo ไม่มี `PROCESS.md` | สร้าง repo โดยไม่ใส่ `--template` | ลบ repo บนเว็บ (Settings → Delete this repository) แล้วสร้างใหม่ตาม C1 **ก่อน** เริ่ม commit งาน |
-| หา Add people ไม่เจอ | เปิดหน้า settings ผิด repo หรือ repo ไม่ใช่ของเรา | ตรวจ URL ว่าเป็น `github.com/<รหัสนักศึกษา>/310-126-lab0/settings/access` |
+| `gh repo create` ขึ้นว่าชื่อซ้ำ | เคยสร้าง repo ชื่อนี้แล้ว | ใช้ repo เดิม: `gh repo clone 310-126-oop` |
+| ใน repo ไม่มี `NewTask.java` หรือ `_template/` | สร้าง repo โดยไม่ใส่ `--template` | ลบ repo บนเว็บ (Settings → Delete this repository) แล้วสร้างใหม่ตาม C1 **ก่อน** เริ่ม commit งาน |
+| หา Add people ไม่เจอ | เปิดหน้า settings ผิด repo หรือ repo ไม่ใช่ของเรา | ตรวจ URL ว่าเป็น `github.com/<รหัสนักศึกษา>/310-126-oop/settings/access` |
 | ภาษาไทยในผลลัพธ์เป็นตัวอักษรเพี้ยน (Windows) | PowerShell ใช้ code page ที่ไม่รองรับ UTF-8 | ใช้ภาษาอังกฤษในข้อความที่พิมพ์ออกจากโปรแกรม |
 | ส่ง SHA ผิด | คัดลอกไม่ครบ 40 ตัว หรือยังไม่ได้ push | `git status` ต้อง up to date แล้วคัดลอกจาก `git rev-parse HEAD` ใหม่ และส่ง Form ใหม่ก่อน deadline |
-| `Error: Could not find or load main class Run` | ยังไม่ได้ compile หรือ `javac *.java` ครั้งล่าสุดมี error จึงยังไม่มี `Run.class` | แก้ compile error แล้ว `javac *.java` ใหม่จนผ่าน และต้องอยู่ในโฟลเดอร์ `310-126-lab0` |
+| `Error: Could not find or load main class Run` | ยังไม่ได้ compile หรือ `javac *.java` ครั้งล่าสุดมี error จึงยังไม่มี `Run.class` | แก้ compile error แล้ว `javac *.java` ใหม่จนผ่าน และต้องอยู่ในโฟลเดอร์ของงาน (เช่น `310-126-oop/Lab0`) |
 | `Run: compile first, ...` | แก้ `.java` หลัง compile ครั้งล่าสุด | `javac *.java` แล้ว `java Run HelloWorld` ใหม่ (ครั้งที่ถูกปฏิเสธไม่ถูกบันทึก) |
-| `Run: HelloWorld.java not found` | รันนอกโฟลเดอร์ repo หรือชื่อไฟล์ไม่ตรงกับชื่อคลาส | `cd` เข้าโฟลเดอร์ `310-126-lab0` ก่อน และตั้งชื่อไฟล์ให้ตรงกับชื่อคลาส (ตัวพิมพ์เล็ก/ใหญ่ต้องตรง) |
+| `Run: HelloWorld.java not found` | รันนอกโฟลเดอร์ของงาน หรือชื่อไฟล์ไม่ตรงกับชื่อคลาส | `cd` เข้าโฟลเดอร์ของงาน (เช่น `310-126-oop/Lab0`) ก่อน และตั้งชื่อไฟล์ให้ตรงกับชื่อคลาส (ตัวพิมพ์เล็ก/ใหญ่ต้องตรง) |
 | `javac` is not recognized / command not found | เครื่องมีแค่ JRE ไม่ใช่ JDK หรือยังไม่ได้เปิด PowerShell / Terminal ใหม่ | ติดตั้ง JDK ตาม A2 (Temurin 21) แล้วเปิด PowerShell / Terminal ใหม่ |
 | ลืม commit หลังรันครั้งสุดท้าย (หรือแก้โค้ดหลังรันครั้งสุดท้าย) | บล็อกสุดท้ายใน `outputs.txt` ไม่ตรงกับโค้ดที่ส่ง | `javac *.java` แล้ว `java Run HelloWorld` อีกครั้งกับโค้ดล่าสุด แล้ว `git add .` + `git commit` + `git push` **ห้ามลบหรือแก้บล็อกเดิม** ใน `outputs.txt` |
 | รันหลายครั้งก่อน commit ครั้งเดียว | ไม่ผิดกติกา แต่บล็อกที่โค้ดไม่อยู่ใน commit ใดอาจารย์ตรวจซ้ำไม่ได้ | ครั้งต่อไป commit หลังรันแต่ละครั้ง |
 | โปรแกรมค้าง ไม่จบ | โปรแกรมรอรับค่าจากคีย์บอร์ด หรือวนไม่รู้จบ | ใส่ค่าที่ต้องพิมพ์ใน `input.txt` `Run` หยุดโปรแกรมเองหลัง 30 วินาที |
+| `NewTask: no _template/ folder` | รัน `java NewTask` ในโฟลเดอร์ของงาน | `cd ..` กลับไปที่ root ของ repo `310-126-oop` แล้วรันใหม่ |
+| `NewTask: Lab0/ already exists` | สร้างโฟลเดอร์นี้ไปแล้ว | ไม่ต้องสร้างใหม่ `cd Lab0` แล้วทำงานต่อ |
+| `Error: Could not find or load main class NewTask` | ยังไม่ได้ `javac NewTask.java` หรือไม่ได้อยู่ที่ root ของ repo | `cd` ไปที่ root ของ repo แล้ว `javac NewTask.java` |
+| `Migrate: you have uncommitted changes` | มีงานที่ยังไม่ได้ commit | `git add .` + `git commit -m "..."` + `git push` แล้วรัน `Migrate.java` ใหม่ |
+| `Migrate: template not found` | ยังไม่ได้ clone template หรือ clone ไว้ที่อื่น | `gh repo clone kasikrit/310-126-lab-template ../310-126-template` แล้วรันใหม่ |
+
+---
+
+<a id="move"></a>
+## ส่วน H: ย้ายจาก `310-126-lab0` (ทำครั้งเดียว เฉพาะคนที่สร้าง `310-126-lab0` ไปแล้ว)
+ทำให้ repo เดิมกลายเป็น repo ของรายวิชา `310-126-oop` และย้ายงาน Lab 0 ทั้งหมดเข้าโฟลเดอร์ `Lab0/` ประวัติ commit, push และ collaborator ยังอยู่ครบ **ทำก่อนเริ่มงานถัดไป**
+
+**H1. เปลี่ยนชื่อ repo บนเว็บ:** เปิด `https://github.com/<รหัสนักศึกษา>/310-126-lab0/settings` → ช่อง **Repository name** พิมพ์ `310-126-oop` → กด **Rename**
+
+**H2. ตั้ง remote ในเครื่องให้ชี้ไปที่ชื่อใหม่** (ในโฟลเดอร์ repo เดิม `310-126-lab0`)
+
+```shell
+git remote set-url origin https://github.com/<รหัสนักศึกษา>/310-126-oop.git
+git pull
+```
+
+**H3. ดึงตัวช่วยย้ายจาก template ของรายวิชา** (ครั้งเดียว วางไว้ข้าง ๆ repo ของเรา)
+
+```shell
+gh repo clone kasikrit/310-126-lab-template ../310-126-template
+```
+
+**H4. ย้ายงานเข้า `Lab0/`**
+
+```shell
+java ../310-126-template/Migrate.java Lab0
+```
+
+`Migrate.java` ย้ายไฟล์งานที่ root ทั้งหมด (`PROCESS.md`, `ai-log/`, `outputs.txt`, `Run.java`, `HelloWorld.java`, ...) เข้า `Lab0/` ด้วย `git mv` และเพิ่ม `NewTask.java`, `_template/` และ README ใหม่ **ยังไม่ commit** ให้ตรวจด้วย `git status`
+
+**H5. commit และ push**
+
+```shell
+git add -A
+git commit -m "Move Lab 0 into Lab0/"
+git push
+```
+
+**H6. compile ตัวช่วยสร้างโฟลเดอร์งาน** แล้วทำงานต่อตามปกติ (งานถัดไปใช้ `java NewTask Assignment1` เป็นต้น)
+
+```shell
+javac NewTask.java
+```
+
+- ชื่อโฟลเดอร์ในเครื่องยังเป็น `310-126-lab0` ได้ ไม่มีผล (เปลี่ยนชื่อโฟลเดอร์เป็น `310-126-oop` ก็ได้)
+- ถ้าส่ง SHA ของ Lab 0 ไปก่อนย้ายแล้ว ไม่ต้องส่งใหม่ อาจารย์ตรวจ SHA เดิมได้ ถ้าส่งใหม่หลังย้าย ให้ใช้ URL `https://github.com/<รหัสนักศึกษา>/310-126-oop`
