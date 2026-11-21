@@ -1,6 +1,32 @@
 # ประกาศกติกาการใช้ AI และการส่งงาน วิชา 310-126 OOP (ภาคการศึกษา 2/69)
 
 
+## ประกาศเพิ่มเติม 21 พ.ย. 2569: เปลี่ยนเป็น repo เดียวทั้งภาค (ทำก่อน 27 พ.ย. 2569 23:59 น.)
+
+ตั้งแต่ Assignment 1 เป็นต้นไป ทุก Lab และ Assignment อยู่ใน **repo เดียวทั้งภาค** ชื่อ **`310-126-oop`** แต่ละงานเป็นโฟลเดอร์ย่อย เช่น `Lab0/`, `Assignment1/` **เชิญอาจารย์และ TA เพียงครั้งเดียว** ไม่ต้องสร้าง repo ใหม่ทุกงาน
+
+**ใครต้องทำอะไร**
+- **สร้าง repo `310-126-lab0` ไปแล้ว:** ทำตาม **ส่วน H: ย้ายจาก 310-126-lab0** ใน [handout Lab 0](Lab0-handout.md) (ประมาณ 5 นาที) ประวัติ commit, push และ collaborator ยังอยู่ครบ
+- **ยังไม่ได้สร้าง repo:** สร้าง `310-126-oop` ตามส่วน C ใน handout ได้เลย
+
+**สรุปขั้นตอนส่วน H** (ใน PowerShell หรือ Terminal ในโฟลเดอร์ repo เดิม)
+1. บนเว็บ GitHub: repo `310-126-lab0` → **Settings** → **Repository name** เปลี่ยนเป็น `310-126-oop` → **Rename**
+2. `git remote set-url origin https://github.com/<รหัสนักศึกษา>/310-126-oop.git` แล้ว `git pull`
+3. `gh repo clone kasikrit/310-126-lab-template ../310-126-template`
+4. `java ../310-126-template/Migrate.java Lab0`
+5. `git add -A` → `git commit -m "Move Lab 0 into Lab0/"` → `git push`
+6. `javac NewTask.java`
+
+**ทุกงานต่อจากนี้**
+- ที่ root ของ repo: `java NewTask Assignment1` (ชื่อโฟลเดอร์ตามที่ประกาศพร้อมโจทย์) แล้ว `cd Assignment1` และทำงานในโฟลเดอร์นั้น
+- compile และรันเหมือนเดิม: `javac *.java` แล้ว `java Run <ชื่อคลาส>`
+- ส่งงานผ่าน Google Form ด้วย URL `https://github.com/<รหัสนักศึกษา>/310-126-oop` (URL เดิมทุกงาน) และ SHA 40 ตัว
+
+**หมายเหตุ**
+- ส่ง SHA ของ Lab 0 ไปแล้วก่อนย้าย ไม่ต้องส่งใหม่
+- push ขั้นต่ำของแต่ละงานนับเฉพาะ push ที่มีการเปลี่ยนไฟล์ในโฟลเดอร์ของงานนั้น
+- ติดปัญหา ดูส่วน G ใน handout หรือถาม TA (`tonethana`, `kroekchanwit`)
+
 ## ประกาศถึงนักศึกษา
 
 | Google Form | ลิงก์ | ทำเมื่อไร |
